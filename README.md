@@ -1,39 +1,39 @@
 # andmebaasid
 andmebaasid seotud sql kood ja konspektid
-## põhimõisted
+## põhimõisted / основные понятия
 - andmebaas - struktureeritud andmete kogum
-- tabel = olem - сущность - entity
+- tabel = olem - entity - сущность
 - veerg = väli - поле
 - rida = kirje - записи
 - andmebaasi haldussüsteem - tarkvara, millega abil saab luua andmebaas: mariaDB / XAMPP, SQL SERVER management studio.
 
 <img width="235" height="250" alt="{D6EDACB8-015F-451E-AD2D-60C8C2EDF6A4}" src="https://github.com/user-attachments/assets/ad75e3be-05c5-4cc1-bb60-a6ccf292d9bb" />
 
-- primaarne võti - PRIMARY KEY -veerg(tavaliselt id nimega), unikaalne identifikaator, mis eristab iga kirje.
-- välisvõti - FOREIGN KEY -FK - veetg, mis loob seos teise tabeli primaarvõtega.
+- primaarne võti - PRIMARY KEY -veerg(tavaliselt id nimega), unikaalne identifikaator, mis eristab iga kirje. / первичный ключ, столбец (обычно с названием id), уникальный идентификатор, который отличает каждую запись.
+- välisvõti - FOREIGN KEY -FK - veerg, mis loob seos teise tabeli primaarvõtega. / внешний ключ, столбец, который создаёт связь с первичным ключом другой таблицы
 - päring - QUERY - запрос
 
-## andmetüübid
+## andmetüübid / типы данных
 ```
 1. numbrilised: INT, smallINT, float, decimal(5,2)
 2. tekst/sümbulised: varchar(255), char(5), TEXT
 3. loogilised: boolean, true/false, bit, bool
 4. kuupäeva: date, time, datetime
 ```
-## SQL - structure query language - struktureeritud päringu keel
+## SQL - structure query language - struktureeritud päringu keel / структурированный язык запросов
 - tabeli loomine
 ```sql
-CREATE TABLE opilanee(
+CREATE TABLE opilane1(
 opilaneID int Primary Key identity(1,1), -- automaatselt täidab numbridega
 eesnimi varchar(25),
 perenimi varchar(30) NOT NULL,
 synniaeg DATE,
 stip bit,
 mobiil varchar(13),
-aarress TEXT,
+aadress TEXT,
 keskminehinne decimal(2,1) ); --(2 - kokku, 1 - peale komat nt 4.5)
 
-SELECT * FROM opilanee;
+SELECT * FROM opilane1;
 ```
 - andmete sisestamine tabelisse
 ```sql
@@ -46,7 +46,7 @@ VALUES ('radasheva', 'natja', 4.5),
 ('merkulova', 'irina', 4.5);
 ```
 
-## seosed (tabelivahelised seosed)
+## seosed (tabelivahelised seosed) / связи (между таблицами)
 - üks-ühele (nt mees-naine)
 - üks-mitmele (nt ema-lapsed)
 
@@ -54,7 +54,7 @@ VALUES ('radasheva', 'natja', 4.5),
 
 - mitu-mitmele (nt õpilased-õpetajad)
 
-## PIIRANGUD - ограничение(будет в тесте!!)
+## PIIRANGUD - ограничения(будет в тесте!!)
 constraint - ограничения (5)
 1. PRIMARY KEY
 2. FOREIGN KEY

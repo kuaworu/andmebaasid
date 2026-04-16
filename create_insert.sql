@@ -14,7 +14,7 @@ perenimi varchar(30) NOT NULL,
 synniaeg DATE,
 stip bit,
 mobiil varchar(13),
-aarress TEXT,
+aadress TEXT,
 keskminehinne decimal(2,1) ); --(2 - kokku, 1 - peale komat nt 4.5)
 
 SELECT * FROM opilane1;
@@ -29,8 +29,8 @@ VALUES ('radasheva', 'natja', 4.5),
 ('merkulova', 'irina', 4.5);
 
 -- andmete uueandamine tabelis
-UPDATE opilane1 SET stip=1, aarress='tallinn';
-UPDATE opilane1 SET stip=1, aarress='tartu' WHERE opilaneID=5;
+UPDATE opilane1 SET stip=1, aadress='tallinn';
+UPDATE opilane1 SET stip=1, aadress='tartu' WHERE opilaneID=5;
 
 -- kustutamine
 -- tabeli kustutamine
@@ -58,33 +58,33 @@ VALUES ('2026-04-16', 'andmebaasid', 1, 5);
 
 -- iseseisvalt
 
-CREATE TABLE opetaja2(
+CREATE TABLE opetaja1(
 opetajaID int PRIMARY KEY identity(1,1),
 nimi varchar(25),
 epost varchar(40),
-ruum TEXT,
+ruum TEXT
 );
 
-SELECT * from opetaja2;
+SELECT * from opetaja1;
 
 CREATE TABLE tund1(
 tundID int PRIMARY KEY IDENTITY(1,1),
 kuupaev DATE,
 tundnimi varchar(30),
 opetajaID int,
-FOREIGN KEY (opetajaID) REFERENCES opetaja2(opetajaID),
+FOREIGN KEY (opetajaID) REFERENCES opetaja1(opetajaID),
 opetamineID int,
 FOREIGN KEY (opetamineID) REFERENCES opetamine(opetamineID)
 );
 
 SELECT * from tund1;
 
-INSERT INTO opetaja2 (nimi, epost, ruum)
-VALUES (2, 'irina', 'merkulova@gmail.com', 'E120');
+INSERT INTO opetaja1 (nimi, epost, ruum)
+VALUES ('irina', 'merkulova@gmail.com', 'E120');
 
-INSERT INTO tund1 (kuupaev, tundnimi, opetajaID)
-VALUES (2, '2026-04-16', 'andmebaas', 1, 3);
+INSERT INTO tund1 (kuupaev, tundnimi, opetajaID, opetamineID)
+VALUES ('2026-04-16', 'andmebaas', 1, 1);
 
 SELECT * from opilane1
-SELECT * from opetaja2;
+SELECT * from opetaja1;
 SELECT * from tund1;
