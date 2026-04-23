@@ -3,11 +3,12 @@ andmebaasid seotud sql kood ja konspektid
 ## sisukord
 - [põhimisted](#põhimisted)
 - [andmetüübid](#andmetüübid)
-- [PIIRANGUD](#PIIRANGUD)
-- [SQL structure query language struktureeritud päringu keel / структурированный язык запросов](#SQL-structure-query-language-struktureeritud-päringu-keel-/-структурированный-язык-запросов)
+- [tabelivahelised seosed](#tabelivahelised-seosed)
+- [PIIRANGUD](#PIIRANGUD))
+- [SQL structure query languagel](#SQL-structure-query-language)
 - [ALTER TABLE](#ALTER-TABLE)
 
-## põhimõisted / основные понятия
+## põhimõisted
 - andmebaas - struktureeritud andmete kogum
 - tabel = olem - entity - сущность
 - veerg = väli - поле
@@ -20,14 +21,14 @@ andmebaasid seotud sql kood ja konspektid
 - välisvõti - FOREIGN KEY -FK - veerg, mis loob seos teise tabeli primaarvõtega. / внешний ключ, столбец, который создаёт связь с первичным ключом другой таблицы
 - päring - QUERY - запрос
 
-## andmetüübid / типы данных
+## andmetüübid
 ```
 1. numbrilised: INT, smallINT, float, decimal(5,2)
 2. tekst/sümbulised: varchar(255), char(5), TEXT
 3. loogilised: boolean, true/false, bit, bool
 4. kuupäeva: date, time, datetime
 ```
-## SQL - structure query language - struktureeritud päringu keel / структурированный язык запросов
+## SQL-structure query language
 - tabeli loomine
 ```sql
 CREATE TABLE opilane1(
@@ -53,7 +54,7 @@ VALUES ('radasheva', 'natja', 4.5),
 ('merkulova', 'irina', 4.5);
 ```
 
-## seosed (tabelivahelised seosed) / связи (между таблицами)
+## tabelivahelised seosed
 - üks-ühele (nt mees-naine)
 - üks-mitmele (nt ema-lapsed)
 
@@ -61,7 +62,7 @@ VALUES ('radasheva', 'natja', 4.5),
 
 - mitu-mitmele (nt õpilased-õpetajad)
 
-## PIIRANGUD - ограничения(будет в тесте!!)
+## PIIRANGUD
 constraint - ограничения (5)
 1. PRIMARY KEY
 2. FOREIGN KEY
