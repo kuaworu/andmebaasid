@@ -1,12 +1,12 @@
 # andmebaasid
 andmebaasid seotud sql kood ja konspektid
 ## sisukord
-- [põhimisted](#põhimisted)
-- [andmetüübid](#andmetüübid)
-- [tabelivahelised seosed](#tabelivahelised-seosed)
-- [PIIRANGUD](#PIIRANGUD)
-- [SQL structure query languagel](#SQL-structure-query-language)
-- [ALTER TABLE](#ALTER-TABLE)
+- [põhimisted / основные понятия](#põhimisted)
+- [andmetüübid / типы данных](#andmetüübid)
+- [tabelivahelised seosed / связи между таблицами](#tabelivahelised-seosed)
+- [PIIRANGUD / ограничения](#PIIRANGUD)
+- [SQL structured query languagel / структурированный язык запросов](#SQL-structured-query-language)
+- [ALTER TABLE / изменение таблицы](#ALTER-TABLE)
 
 ## põhimõisted
 - andmebaas - struktureeritud andmete kogum
@@ -28,7 +28,7 @@ andmebaasid seotud sql kood ja konspektid
 3. loogilised: boolean, true/false, bit, bool
 4. kuupäeva: date, time, datetime
 ```
-## SQL-structure query language
+## SQL-structured query language
 - tabeli loomine
 ```sql
 CREATE TABLE opilane1(
