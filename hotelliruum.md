@@ -123,3 +123,4 @@ VALUES (1, 1);
 ```
 <img width="309" height="99" alt="{4C01A5C9-21E4-448C-A3C3-DA6D901CCE11}" src="https://github.com/user-attachments/assets/3c498276-7006-48d4-b0dd-d9b4726ee39e" />
 
+<img width="944" height="558" alt="{60419528-D01D-41B2-B43E-29B6BE1242C7}" src="https://github.com/user-attachments/assets/35cf2687-d428-472f-ace6-2b16d19dba8b" />
