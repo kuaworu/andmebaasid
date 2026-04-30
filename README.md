@@ -1,6 +1,14 @@
 # andmebaasid
 andmebaasid seotud sql kood ja konspektid
-## põhimõisted / основные понятия
+## sisukord
+- [põhimisted / основные понятия](#põhimisted)
+- [andmetüübid / типы данных](#andmetüübid)
+- [tabelivahelised seosed / связи между таблицами](#tabelivahelised-seosed)
+- [PIIRANGUD / ограничения](#PIIRANGUD)
+- [SQL structured query languagel / структурированный язык запросов](#SQL-structured-query-language)
+- [ALTER TABLE / изменение таблицы](#ALTER-TABLE)
+
+## põhimõisted
 - andmebaas - struktureeritud andmete kogum
 - tabel = olem - entity - сущность
 - veerg = väli - поле
@@ -13,14 +21,14 @@ andmebaasid seotud sql kood ja konspektid
 - välisvõti - FOREIGN KEY -FK - veerg, mis loob seos teise tabeli primaarvõtega. / внешний ключ, столбец, который создаёт связь с первичным ключом другой таблицы
 - päring - QUERY - запрос
 
-## andmetüübid / типы данных
+## andmetüübid
 ```
 1. numbrilised: INT, smallINT, float, decimal(5,2)
 2. tekst/sümbulised: varchar(255), char(5), TEXT
 3. loogilised: boolean, true/false, bit, bool
 4. kuupäeva: date, time, datetime
 ```
-## SQL - structure query language - struktureeritud päringu keel / структурированный язык запросов
+## SQL-structured query language
 - tabeli loomine
 ```sql
 CREATE TABLE opilane1(
@@ -46,7 +54,7 @@ VALUES ('radasheva', 'natja', 4.5),
 ('merkulova', 'irina', 4.5);
 ```
 
-## seosed (tabelivahelised seosed) / связи (между таблицами)
+## tabelivahelised seosed
 - üks-ühele (nt mees-naine)
 - üks-mitmele (nt ema-lapsed)
 
@@ -54,7 +62,7 @@ VALUES ('radasheva', 'natja', 4.5),
 
 - mitu-mitmele (nt õpilased-õpetajad)
 
-## PIIRANGUD - ограничения(будет в тесте!!)
+## PIIRANGUD
 constraint - ограничения (5)
 1. PRIMARY KEY
 2. FOREIGN KEY
@@ -78,4 +86,50 @@ SELECT * from opilane1;
 -- täidame tabeli
 INSERT INTO opetamine
 VALUES ('2026-04-16', 'andmebaasid', 1, 5);
+```
+
+## ALTER TABLE
+-tabeli struktuuri muutmine (struktuur: veerudenimed, andmetüüpid, piirangud)
+
+```sql
+--uue veeru lisamine
+ALTER TABLE opilane1 ADD isikukood varchar(11);
+
+--veeru kustutamine
+ALTER TABLE opilane1 DROP COLUMN isikukood;
+
+--andmetüübi muutmine varchar(11) --> char(11)
+ALTER TABLE opilane1 ALTER COLUMN isikukood char(11);
+
+--sisseehitatud protseduur, mis näitab tabeli struktuur
+sp_help opilane1;
+```
+
+```sql
+--pk lisamine
+ALTER TABLE ryhm ADD CONSTRAINT pk_ryhm PRIMARY KEY (ryhmid);
+
+--UNIQUE lisamine
+ALTER TABLE ryhm ADD CONSTRAINT un_ryhm UNIQUE (ryhmnimi);
+
+--kontrollimiseks täidame tabelit ryhm
+SELECT * FROM ryhm;
+INSERT INTO ryhm (ryhmid, ryhmnimi)
+VALUES (2, 'TITpe24');
+
+--lisame Foreign Key - võõrvõti/välisvõti
+ALTER TABLE opilane1 ADD ryhmid int;
+SELECT * FROM opilane1;
+ALTER TABLE opilane1 ADD CONSTRAINT fk_ryhm
+FOREIGN KEY (ryhmid) REFERENCES ryhm(ryhmid);
+
+--kontrollimiseks - täidame tabeli opilane1
+INSERT INTO opilane1
+VALUES ('dasa','kovalenko','2007-11-15',1,'+372555555','tallinn', 4.5, 2);
+
+INSERT INTO opilane1
+VALUES ('elina','kotsur','2007-11-15',1,'+372555555','tallinn', 4.5, 1);
+
+SELECT * FROM ryhm;
+SELECT * FROM opilane1;
 ```
