@@ -38,6 +38,7 @@ END
 <img width="254" height="201" alt="{45B5DD73-69B2-4376-A68B-DA1792E1A0FC}" src="https://github.com/user-attachments/assets/88f45f6f-8f57-47b3-91ac-ec54a110828c" />
 
 <img width="360" height="191" alt="{20E1E296-B7B9-4E69-B97A-71F80723D2D2}" src="https://github.com/user-attachments/assets/dd1498bb-b002-43b3-a23d-05a8b6a79c89" />
+
 ### otsing esimese tähe järgi
 ```sql
 -- otsing esimese tähe järgi
