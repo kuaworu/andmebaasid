@@ -1,0 +1,11 @@
+<img width="2554" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/914f0223-3eac-4c63-a3da-0c9c5ff2c231" />
+
+<img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/bc775eba-8348-4073-8768-d9295d0c9270" />
+
+<img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/5c0b0e63-fb14-4502-a33f-34bdabbe339f" />
+
+<img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/4f594207-375e-43b2-9b97-b4f91abdd9e3" />
+
+<img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/ae8e7019-494e-45f2-85ab-7d5a58626e62" />
+
+<img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/e92ec871-26ea-4293-b15d-4b79611e060a" />
