@@ -9,3 +9,7 @@
 <img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/ae8e7019-494e-45f2-85ab-7d5a58626e62" />
 
 <img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/e92ec871-26ea-4293-b15d-4b79611e060a" />
+
+<img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/8d16e99e-e280-4f7d-9c76-38c63be0c1fd" />
+
+<img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/6144545e-0f89-413a-b7f0-3eccfdc4bddd" />
