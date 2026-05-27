@@ -1,0 +1,256 @@
+CREATE DATABASE retseptiraamat;
+USE retseptiraamat;
+
+CREATE TABLE kasutaja (
+    kasutaja_id INT IDENTITY(1,1) PRIMARY KEY,
+    eesnimi VARCHAR(50),
+    perenimi VARCHAR(50),
+    email VARCHAR(150)
+);
+
+select * from kasutaja;
+
+CREATE TABLE kategooria (
+    kategooria_id INT IDENTITY(1,1) PRIMARY KEY,
+    kategooria_nimi VARCHAR(50)
+);
+
+select * from kategooria;
+
+CREATE TABLE toiduaine (
+    toiduaine_id INT IDENTITY(1,1) PRIMARY KEY,
+    toiduaine_nimi VARCHAR(100)
+);
+
+select * from toiduaine;
+
+CREATE TABLE yhik (
+    yhik_id INT IDENTITY(1,1) PRIMARY KEY,
+    yhik_nimi VARCHAR(100)
+);
+
+select * from yhik;
+
+CREATE TABLE retsept (
+    retsept_id INT IDENTITY(1,1) PRIMARY KEY,
+    retsepti_nimi VARCHAR(100),
+    kirjeldus VARCHAR(200),
+    juhend VARCHAR(500),
+    sisestatud_kp DATE,
+    kasutaja_id INT,
+    kategooria_id INT,
+    FOREIGN KEY (kasutaja_id) REFERENCES kasutaja(kasutaja_id),
+    FOREIGN KEY (kategooria_id) REFERENCES kategooria(kategooria_id)
+);
+
+select * from retsept;
+
+CREATE TABLE koostis (
+    koostis_id INT IDENTITY(1,1) PRIMARY KEY,
+    kogus INT,
+    retsept_retsept_id INT,
+    toiduaine_id INT,
+    yhik_id INT,
+    FOREIGN KEY (retsept_retsept_id) REFERENCES retsept(retsept_id),
+    FOREIGN KEY (toiduaine_id) REFERENCES toiduaine(toiduaine_id),
+    FOREIGN KEY (yhik_id) REFERENCES yhik(yhik_id)
+);
+
+select * from koostis;
+
+CREATE TABLE tehtud (
+    tehtud_id INT IDENTITY(1,1) PRIMARY KEY,
+    tehtud_kp DATE,
+    retsept_id INT,
+    FOREIGN KEY (retsept_id) REFERENCES retsept(retsept_id)
+);
+
+select * from tehtud;
+
+
+INSERT INTO kasutaja (eesnimi, perenimi, email) VALUES
+('dasa','kovalenko','dasa@gmail.com'),
+('elina','kotsur','elina@gmail.com'),
+('nastja','radasheva','nastja@gmail.com'),
+('nastja','jušinskaja','nast@gmail.com'),
+('milana','smolenko','milana@gmail.com');
+
+INSERT INTO kategooria (kategooria_nimi) VALUES
+('supp'),('magustoit'),('salat'),('jook'),('praad');
+
+INSERT INTO toiduaine (toiduaine_nimi) VALUES
+('kartul'),('piim'),('kana'),('sool'),('suhkur');
+
+INSERT INTO yhik (yhik_nimi) VALUES
+('kg'),('g'),('ml'),('tk'),('spl');
+
+insert into retsept values
+('kartulisupp','maitsev supp','keeda 30 min','2025-01-01',1,1),
+('pannkoogid','magus toit','prae pannil','2025-01-02',2,2),
+('kana salat','tervislik','sega koostisosad','2025-01-03',3,3),
+('kakao','soe jook','lisa piim','2025-01-04',4,4),
+('praekana','ahjuroog','küpseta ahjus','2025-01-05',5,5);
+
+INSERT INTO koostis VALUES
+(2,1,1,1),
+(500,1,2,3),
+(1,3,3,4),
+(1,1,4,5),
+(100,2,5,2);
+
+INSERT INTO tehtud VALUES
+('2026-01-01',1),
+('2026-02-02',2),
+('2026-03-03',3),
+('2026-04-04',4),
+('2026-05-05',5);
+
+SELECT * FROM kasutaja;
+SELECT * FROM kategooria;
+SELECT * FROM toiduaine;
+SELECT * FROM yhik;
+SELECT * FROM retsept;
+SELECT * FROM koostis;
+SELECT * FROM tehtud;
+
+SELECT eesnimi,
+       (SELECT retsepti_nimi
+        FROM retsept
+        WHERE retsept.kasutaja_id = kasutaja.kasutaja_id) AS retsept
+FROM kasutaja;
+
+SELECT retsepti_nimi,
+       (SELECT toiduaine_nimi FROM toiduaine WHERE toiduaine_id =
+           (SELECT toiduaine_id FROM koostis WHERE koostis.retsept_retsept_id = retsept.retsept_id)
+       ) AS toiduaine,
+       (SELECT kogus FROM koostis WHERE koostis.retsept_retsept_id = retsept.retsept_id) AS kogus,
+       (SELECT yhik_nimi FROM yhik WHERE yhik_id =
+           (SELECT yhik_id FROM koostis WHERE koostis.retsept_retsept_id = retsept.retsept_id)
+       ) AS yhik
+FROM retsept;
+
+SELECT kategooria_nimi,
+       (SELECT COUNT(*)
+        FROM retsept
+        WHERE retsept.kategooria_id = kategooria.kategooria_id) AS kogus
+FROM kategooria;
+
+CREATE PROCEDURE kasutaja_lisa
+    @eesnimi VARCHAR(50),
+    @perenimi VARCHAR(50),
+    @email VARCHAR(150)
+AS
+BEGIN
+    INSERT INTO kasutaja (eesnimi, perenimi, email)
+    VALUES (@eesnimi, @perenimi, @email);
+END;
+
+CREATE PROCEDURE lisa_retsept
+    @nimi VARCHAR(100),
+    @kirj VARCHAR(200),
+    @juh VARCHAR(500),
+    @kp DATE,
+    @kasutaja INT,
+    @kategooria INT
+AS
+BEGIN
+    INSERT INTO retsept
+    (retsepti_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
+    VALUES
+    (@nimi, @kirj, @juh, @kp, @kasutaja, @kategooria);
+END;
+
+GRANT SELECT ON kasutaja TO staff;
+GRANT SELECT, INSERT ON toiduaine TO staff;
+GRANT SELECT, INSERT ON kategooria TO staff;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON retsept TO manager;
+GRANT SELECT, INSERT, UPDATE, DELETE ON koostis TO manager;
+GRANT SELECT ON kasutaja TO manager;
+GRANT SELECT ON toiduaine TO manager;
+
+DENY INSERT ON kasutaja TO manager;
+DENY INSERT ON toiduaine TO manager;
+
+SELECT name
+FROM sys.procedures;
+
+EXEC kasutaja_lisa 'test', 'user', 'test@gmail.com';
+SELECT * FROM kasutaja;
+
+EXEC lisa_retsept
+    @nimi = 'supp',
+    @kirj = 'lihtne supp',
+    @juh = 'keeda vees',
+    @kp = '2025-01-01',
+    @kasutaja = 1,
+    @kategooria = 1;
+SELECT * FROM retsept;
+
+CREATE PROCEDURE muuda_tabelit
+    @tabeli_nimi VARCHAR(100),
+    @veeru_nimi VARCHAR(100),
+    @andmetuup VARCHAR(100)
+AS
+BEGIN
+    DECLARE @sql NVARCHAR(MAX);
+
+    SET @sql = 'ALTER TABLE ' + @tabeli_nimi +
+               ' ADD ' + @veeru_nimi + ' ' + @andmetuup;
+
+    EXEC sp_executesql @sql;
+END;
+EXEC muuda_tabelit 'kasutaja', 'telefon', 'VARCHAR(20)';
+SELECT * FROM kasutaja;
+
+-- дополнительно табличка + процедурв
+
+CREATE TABLE lisatoo (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    nimi VARCHAR(100),
+    kirjeldus VARCHAR(200)
+);
+
+INSERT INTO lisatoo (nimi, kirjeldus) VALUES
+('töö1', 'esimene kirjeldus'),
+('töö2', 'teine kirjeldus'),
+('töö3', 'kolmas kirjeldus'),
+('töö4', 'neljas kirjeldus'),
+('töö5', 'viies kirjeldus');
+
+CREATE PROCEDURE lisa_lisatöö
+    @nimi VARCHAR(100),
+    @kirjeldus VARCHAR(200)
+AS
+BEGIN
+    INSERT INTO lisatoo (nimi, kirjeldus)
+    VALUES (@nimi, @kirjeldus);
+END;
+
+CREATE PROCEDURE kustuta_lisatöö
+    @id INT
+AS
+BEGIN
+    DELETE FROM lisatoo
+    WHERE id = @id;
+END;
+
+EXEC lisa_lisatöö 'test', 'proov kirjeldus';
+SELECT * FROM lisatoo;
+
+EXEC kustuta_lisatöö 1;
+SELECT * FROM lisatoo;
+
+
+
+SELECT eesnimi,
+       (SELECT retsepti_nimi
+        FROM retsept
+        WHERE retsept.kasutaja_id = kasutaja.kasutaja_id) AS retsept
+FROM kasutaja;
+
+SELECT kategooria_nimi,
+       (SELECT COUNT(*)
+        FROM retsept
+        WHERE retsept.kategooria_id = kategooria.kategooria_id) AS kogus
+FROM kategooria;
