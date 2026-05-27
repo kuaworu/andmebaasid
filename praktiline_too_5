@@ -254,3 +254,17 @@ SELECT kategooria_nimi,
         FROM retsept
         WHERE retsept.kategooria_id = kategooria.kategooria_id) AS kogus
 FROM kategooria;
+
+EXECUTE AS USER = 'staff';
+SELECT * FROM kasutaja;
+INSERT INTO kasutaja (eesnimi, perenimi, email)
+VALUES ('test', 'test', 'test@test.ee');
+REVERT;
+
+EXECUTE AS USER = 'manager';
+INSERT INTO kasutaja (eesnimi, perenimi, email)
+VALUES ('manager_test', 'test', 'test@test.ee');
+INSERT INTO toiduaine (toiduaine_nimi)
+VALUES ('šokolaad');
+INSERT INTO retsept (retsepti_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
+VALUES ('test', 'test', 'test', '2025-01-01', 1, 1);
