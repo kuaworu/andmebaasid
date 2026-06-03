@@ -1,3 +1,7 @@
+#kasutaja xampp
+
+[põhimõisted](README.md) | [protseduurid sql serveris](protseduur.md) | [protseduurid xamppis](xampp_protseduurid.md) | [kasutaja sql serveris](kasutaja.md) | [kasutaja xamppis](kasutaja_xampp.md) | [create kasutajad konspekt](create_kasutajad.md) | [trigerid sql serveris](triger.md) | [trigerid xamppis](triger_xampp.md) | [hotelliruum](hotelliruum.md) | [keys - kodutöö](keys.md)
+
 <img width="2554" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/914f0223-3eac-4c63-a3da-0c9c5ff2c231" />
 
 <img width="2559" height="1599" alt="изображение" src="https://github.com/user-attachments/assets/bc775eba-8348-4073-8768-d9295d0c9270" />
