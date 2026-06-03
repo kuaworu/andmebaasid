@@ -1,4 +1,7 @@
 ## sql protseduurid
+
+[põhimõisted](README.md) | [protseduurid sql serveris](protseduur.md) | [protseduurid xamppis](xampp_protseduurid.md) | [kasutaja sql serveris](kasutaja.md) | [kasutaja xamppis](kasutaja_xampp.md) | [create kasutajad konspekt](create_kasutajad.md) | [trigerid sql serveris](triger.md) | [trigerid xamppis](triger_xampp.md) | [hotelliruum](hotelliruum.md) | [keys - kodutöö](keys.md)
+
 - store procedure - salvestatud protseduurid - хранимые процедуры
 - sama nagu funktsioonid programmeerimises - mingi tegevused mis käivitakse automaatselt protseduuri kasutamisel.
 
