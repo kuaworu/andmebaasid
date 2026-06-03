@@ -1,5 +1,7 @@
 # andmebaas hotelliruumi reserveerimine
 
+[põhimõisted](README.md) | [protseduurid sql serveris](protseduur.md) | [protseduurid xamppis](xampp_protseduurid.md) | [kasutaja sql serveris](kasutaja.md) | [kasutaja xamppis](kasutaja_xampp.md) | [create kasutajad konspekt](create_kasutajad.md) | [trigerid sql serveris](triger.md) | [trigerid xamppis](triger_xampp.md) | [hotelliruum](hotelliruum.md) | [keys - kodutöö](keys.md)
+
 ## kõik tabelid
 
 <img width="944" height="558" alt="{60419528-D01D-41B2-B43E-29B6BE1242C7}" src="https://github.com/user-attachments/assets/35cf2687-d428-472f-ace6-2b16d19dba8b" />
