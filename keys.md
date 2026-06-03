@@ -1,5 +1,7 @@
 ## andmebaasi võtmed (keys) – it-firma struktuuri näitel
 
+[põhimõisted](README.md) | [protseduurid sql serveris](protseduur.md) | [protseduurid xamppis](xampp_protseduurid.md) | [kasutaja sql serveris](kasutaja.md) | [kasutaja xamppis](kasutaja_xampp.md) | [create kasutajad konspekt](create_kasutajad.md) | [trigerid sql serveris](triger.md) | [trigerid xamppis](triger_xampp.md) | [hotelliruum](hotelliruum.md) | [keys - kodutöö](keys.md)
+
 ### primary key (primaarvõti)
 > **definitsioon:** väli või väljade kombinatsioon, mis peavad olema unikaalsed iga rea jaoks ja mis indekseeritakse, et tagada rea kiire otsing võtme väärtuse järgi; see ei tohi sisaldada null-väärtusi ning tabelil saab olla ainult üks primaarvõti. tavaliselt indekseeritakse see klasterdatud indeksiga, mis tähendab, et andmed tabelis järjestatakse ümber vastavalt indeksi järjekorrale, mis parandab oluliselt andmete jadaotsingut.
 > 
