@@ -1,5 +1,7 @@
 ## sql server – kasutajate autentimine ja õiguste haldamine
 
+[põhimõisted](README.md) | [protseduurid sql serveris](protseduur.md) | [protseduurid xamppis](xampp_protseduurid.md) | [kasutaja sql serveris](kasutaja.md) | [kasutaja xamppis](kasutaja_xampp.md) | [create kasutajad konspekt](create_kasutajad.md) | [trigerid sql serveris](triger.md) | [trigerid xamppis](triger_xampp.md) | [hotelliruum](hotelliruum.md) | [keys - kodutöö](keys.md)
+
 mis on autentimine sql serveris?
 
 ### autentimine tähendab kasutaja tuvastamist ehk kontrollimist, kas kasutajal on õigus sql serverisse sisse logida.
