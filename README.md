@@ -1,4 +1,7 @@
-# andmebaasid
+# andmebaaside konspektid - Anastasia Jušinskaja
+
+[põhimõisted](README.md) | [protseduurid sql serveris](protseduur.md)
+
 andmebaasid seotud sql kood ja konspektid
 ## sisukord
 - [põhimisted / основные понятия](#põhimisted)
