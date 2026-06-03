@@ -185,6 +185,12 @@ create table digital_certificates (
 
 ---
 
+<img width="1068" height="519" alt="{3B879D21-A5B5-465D-B48F-C254A5490CBC}" src="https://github.com/user-attachments/assets/333ee14d-b095-47f7-9de2-3faed55cfe18" />
+
+---
+
+
+
 ### kasutatud allikad
 * https://stackoverflow.com/questions/2008260/understanding-keys-in-databases
 * https://stackoverflow.com/questions/655446/what-is-a-simple-example-to-explain-what-a-foreign-key-is
