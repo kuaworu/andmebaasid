@@ -1,6 +1,6 @@
 # andmebaaside konspektid - Anastasia Jušinskaja
 
-[põhimõisted](README.md) | [protseduurid sql serveris](protseduur.md)
+[põhimõisted](README.md) | [protseduurid sql serveris](protseduur.md) | [protseduurid xamppis](xampp_protseduurid.md) | [kasutaja sql serveris](kasutaja.md) | [kasutaja xamppis](kasutaja_xampp.md) | [trigerid sql serveris](triger.md) | [trigerid xamppis](triger_xampp.md) | [hotelliruum](hotelliruum.md) | [keys - kodutöö](keys.md)
 
 andmebaasid seotud sql kood ja konspektid
 ## sisukord
